@@ -1,7 +1,8 @@
 import { Address, createPublicClient, createWalletClient } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { http } from "wagmi";
-import { baseSepolia, base, hardhat } from "wagmi/chains";
+import { hardhat } from "wagmi/chains";
+import { ink, inkSepolia } from "viem/chains";
 
 const HTTP_TRANSPORT_URLS = {
   development: "http://127.0.0.1:8545/",
@@ -16,8 +17,8 @@ const HTTP_TRANSPORT_URL = HTTP_TRANSPORT_URLS[env];
 
 export function getChainsAndTransports(): {
   chains:
-    | readonly [typeof baseSepolia]
-    | readonly [typeof base]
+    | readonly [typeof inkSepolia]
+    | readonly [typeof ink]
     | readonly [typeof hardhat];
   transports: {
     [key: string]: ReturnType<typeof http>;
@@ -34,9 +35,9 @@ export function getChainsAndTransports(): {
 
   if (env === "testnet") {
     return {
-      chains: [baseSepolia],
+      chains: [inkSepolia],
       transports: {
-        [baseSepolia.id]: http(HTTP_TRANSPORT_URL),
+        [inkSepolia.id]: http(HTTP_TRANSPORT_URL),
       },
     } as const;
   }
@@ -46,9 +47,9 @@ export function getChainsAndTransports(): {
   }
 
   return {
-    chains: [base],
+    chains: [ink],
     transports: {
-      [base.id]: http(HTTP_TRANSPORT_URL),
+      [ink.id]: http(HTTP_TRANSPORT_URL),
     },
   } as const;
 }
@@ -61,12 +62,12 @@ function getAccountParamsByNetwork() {
       privateKey: process.env.DEVELOPMENT_PK,
     },
     testnet: {
-      chain: baseSepolia,
+      chain: inkSepolia,
       httpUrl: HTTP_TRANSPORT_URLS.testnet,
       privateKey: process.env.TESTNET_PK,
     },
     mainnet: {
-      chain: base,
+      chain: ink,
       httpUrl: HTTP_TRANSPORT_URLS.mainnet,
       privateKey: process.env.MAINNET_PK,
     },
