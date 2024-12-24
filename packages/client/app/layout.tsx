@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <title>Inky Onchain</title>
         <meta
-          content="An onchain art collection commemorating the launch of Ink's L2 blockchain"
+          content="An onchain art collection commemorating the launch of the Ink blockchain"
           name="description"
         />
         <link
@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   </div>
                 </main>
 
-                <footer className="p-4 text-white text-center mt-8">
+                <footer className="p-4 text-white text-center mt-16">
                   A project by{" "}
                   <a
                     href="https://warpcast.com/typeof.eth"

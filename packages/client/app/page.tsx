@@ -48,9 +48,14 @@ export default function Home() {
 
       <MintButton />
 
-      <p className={cn(vt323.className, "text-center text-lg text-white")}>
+      <p
+        className={cn(
+          vt323.className,
+          "text-center text-lg text-white max-w-md",
+        )}
+      >
         A 31px by 31px, fully onchain art collection commemorating the launch of
-        Ink's L2 blockchain.
+        Kraken's L2 blockchain: Ink 🦑
       </p>
 
       <Image
