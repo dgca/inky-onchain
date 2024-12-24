@@ -48,13 +48,13 @@ export default function Home() {
         alt="InkyOnChain"
         width={400}
         height={400}
-        className="my-12"
+        className="mt-12"
       />
 
       <ul
         className={cn(
           vt323.className,
-          "list-none text-center text-xl text-white space-y-2 mt-8",
+          "list-none text-center text-xl text-white space-y-2 mt-10",
         )}
       >
         <li>{typeof data === "bigint" ? Number(data) : "—"} of 2024 minted</li>
