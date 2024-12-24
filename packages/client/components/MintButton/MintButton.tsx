@@ -15,7 +15,7 @@ export function MintButton() {
   const router = useRouter();
 
   return (
-    <div className="my-12 flex flex-col items-center">
+    <div className="flex flex-col items-center">
       {address ? (
         <>
           <Button
