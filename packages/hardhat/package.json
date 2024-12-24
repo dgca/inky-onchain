@@ -1,0 +1,33 @@
+{
+  "name": "@inky-onchain/hardhat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "node": "hardhat node",
+    "deploy-local": "hardhat run --network localhost scripts/deploy.ts && pnpm run build",
+    "deploy-sepolia": "hardhat run --network sepolia scripts/deploy.ts && pnpm run build",
+    "deploy-mainnet": "hardhat run --network mainnet scripts/deploy.ts && pnpm run build",
+    "build": "echo 'build...something'"
+  },
+  "keywords": [],
+  "author": "Daniel Cortes",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^0.15.8",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.12",
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.12",
+    "@openzeppelin/contracts": "^5.1.0",
+    "chai": "4",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.13.4",
+    "hardhat": "^2.22.17",
+    "hardhat-contract-sizer": "^2.10.0",
+    "ts-node": "^10.9.2",
+    "viem": "2.21.57"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-viem": "^2.0.6"
+  }
+}

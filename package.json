@@ -1,0 +1,12 @@
+{
+  "name": "inky-onchain",
+  "private": true,
+  "scripts": {
+    "client:dev": "pnpm --filter client dev",
+    "client:build": "pnpm --filter client build",
+    "client:start": "pnpm --filter client start"
+  },
+  "devDependencies": {
+    "prettier-plugin-solidity": "^1.4.1"
+  }
+}
