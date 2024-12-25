@@ -20,7 +20,7 @@ export default function Home() {
   });
 
   return (
-    <>
+    <div className="flex flex-col gap-6 my-8">
       <h1 className={cn(vt323.className, "text-6xl text-white text-center")}>
         Inky Onchain
       </h1>
@@ -28,10 +28,10 @@ export default function Home() {
       <p
         className={cn(
           vt323.className,
-          "text-center text-lg text-white max-w-md mt-8 mb-4",
+          "text-center text-lg text-white max-w-md",
         )}
       >
-        A 31px by 31px, fully onchain art collection commemorating the launch of
+        A 31px by 31px, onchain art collection commemorating the launch of
         Kraken's L2 blockchain: Ink 🦑
       </p>
 
@@ -40,7 +40,7 @@ export default function Home() {
       <p
         className={cn(
           vt323.className,
-          "text-center text-lg text-white max-w-md mx-auto mb-8",
+          "text-center text-lg text-white max-w-md mx-auto",
         )}
       >
         Need Ink ETH? Bridge from Base to Ink via{" "}
@@ -79,6 +79,17 @@ export default function Home() {
         About Inky
       </h2>
 
+      <p
+        className={cn(
+          vt323.className,
+          "text-center text-lg text-white max-w-md",
+        )}
+      >
+        Each token encodes the token ID and minter's address directly into the
+        artwork, creating a permanent and personalized record on the blockchain.
+        Ink your name on the blockchain today!
+      </p>
+
       <Image
         src="/inky-image.png"
         alt="InkyOnChain"
@@ -115,14 +126,6 @@ export default function Home() {
           </a>
         </li>
       </ul>
-
-      <p
-        className={cn(vt323.className, "text-center text-lg text-white mt-12")}
-      >
-        Limited to 2024 unique bitmap NFTs, each piece encodes the token ID and
-        minter's address directly into the artwork, creating a permanent and
-        personalized record on the blockchain.
-      </p>
-    </>
+    </div>
   );
 }

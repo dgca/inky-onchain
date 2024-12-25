@@ -37,7 +37,6 @@ export function MintButton() {
               setError("Failed to switch network");
             }
           }}
-          className="mb-4"
         >
           Switch to Ink Chain
         </Button>
