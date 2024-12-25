@@ -1,4 +1,10 @@
-import { useAccount, usePublicClient, useWriteContract } from "wagmi";
+import {
+  useAccount,
+  usePublicClient,
+  useWriteContract,
+  useChainId,
+  useSwitchChain,
+} from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Button } from "../ui/button";
 import { INKY_ABI } from "@/web3/abis/InkyOnChain";
@@ -7,16 +13,36 @@ import { retryPromise } from "@/lib/retryPromise";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+const INK_CHAIN_ID = 57073;
+
 export function MintButton() {
-  const { address } = useAccount();
+  const { address, chainId } = useAccount();
   const { writeContractAsync, isPending } = useWriteContract();
   const publicClient = usePublicClient();
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const { switchChainAsync } = useSwitchChain();
+
+  const isWrongChain = chainId !== INK_CHAIN_ID;
 
   return (
     <div className="flex flex-col items-center">
-      {address ? (
+      {address && isWrongChain && (
+        <Button
+          variant="secondary"
+          onClick={async () => {
+            try {
+              await switchChainAsync({ chainId: INK_CHAIN_ID });
+            } catch (err) {
+              setError("Failed to switch network");
+            }
+          }}
+          className="mb-4"
+        >
+          Switch to Ink Chain
+        </Button>
+      )}
+      {address && !isWrongChain && (
         <>
           <Button
             variant="secondary"
@@ -65,17 +91,16 @@ export function MintButton() {
                 );
               }
             }}
-            disabled={isPending}
+            disabled={isPending || isWrongChain}
           >
             {isPending ? "Minting..." : "Mint Your Inky"}
           </Button>
           <p className="text-xs text-white mt-2">Price: 0.002 ETH</p>
         </>
-      ) : (
-        <ConnectButton />
       )}
+      {!address && <ConnectButton />}
       {error && (
-        <p className="text-red-500 text-sm mt-6 text-center border border-red-500 bg-red-50 rounded p-2">
+        <p className="text-red-500 text-sm mt-2 text-center border border-red-500 bg-red-50 rounded p-2 mb-8">
           {error}
         </p>
       )}

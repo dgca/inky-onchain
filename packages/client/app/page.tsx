@@ -28,7 +28,7 @@ export default function Home() {
       <p
         className={cn(
           vt323.className,
-          "text-center text-lg text-white max-w-md mt-8 mb-12",
+          "text-center text-lg text-white max-w-md mt-8 mb-4",
         )}
       >
         A 31px by 31px, fully onchain art collection commemorating the launch of
@@ -36,6 +36,42 @@ export default function Home() {
       </p>
 
       <MintButton />
+
+      <p
+        className={cn(
+          vt323.className,
+          "text-center text-lg text-white max-w-md mx-auto mb-8",
+        )}
+      >
+        Need Ink ETH? Bridge from Base to Ink via{" "}
+        <a
+          href="https://relay.link/bridge/ink?includeChainIds=57073&fromChainId=8453&fromCurrency=0x0000000000000000000000000000000000000000"
+          target="_blank"
+          rel="noreferrer"
+          className="text-white underline hover:text-gray-300"
+        >
+          Relay
+        </a>
+        ,{" "}
+        <a
+          href="https://rainbow.me/en/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-white underline hover:text-gray-300"
+        >
+          Rainbow Wallet
+        </a>
+        , or check out the{" "}
+        <a
+          href="https://inkonchain.com/dashboard?&category=bridge"
+          target="_blank"
+          rel="noreferrer"
+          className="text-white underline hover:text-gray-300"
+        >
+          list of bridges
+        </a>{" "}
+        on the Ink website.
+      </p>
 
       <h2
         className={cn(vt323.className, "text-4xl text-white text-center mt-12")}
