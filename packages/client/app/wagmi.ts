@@ -10,7 +10,7 @@ declare module "wagmi" {
 }
 
 export const config = getDefaultConfig({
-  appName: "BasePaint Christmas 2024",
+  appName: "Inky Onchain",
   projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
   chains,
   transports,
