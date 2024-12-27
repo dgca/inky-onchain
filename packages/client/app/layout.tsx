@@ -9,10 +9,19 @@ import { config } from "./wagmi";
 
 import "@rainbow-me/rainbowkit/styles.css";
 import "./globals.css";
+import { VT323 } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { usePathname, useRouter } from "next/navigation";
 
 const client = new QueryClient();
 
+const vt323 = VT323({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
   return (
     <html lang="en">
       <head>
@@ -37,12 +46,35 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             >
               <div className="grid grid-rows-[1fr_auto] min-h-screen relative">
                 <main className="grow p-4 relative">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-0 sm:justify-between">
                     <Logo />
+                    <nav
+                      className={cn(
+                        vt323.className,
+                        "sm:absolute sm:left-1/2 sm:-translate-x-1/2 flex items-center gap-6 text-xl",
+                      )}
+                    >
+                      <a
+                        href="/"
+                        className={`text-white hover:text-gray-300 ${
+                          pathname === "/" ? "underline" : ""
+                        }`}
+                      >
+                        Mint
+                      </a>
+                      <a
+                        href="/tokens"
+                        className={`text-white hover:text-gray-300 ${
+                          pathname === "/tokens" ? "underline" : ""
+                        }`}
+                      >
+                        Tokens
+                      </a>
+                    </nav>
                     <ConnectButton />
                   </div>
 
-                  <div className="flex flex-col items-center max-w-[700px] mx-auto mt-6">
+                  <div className="flex flex-col items-center max-w-[1200px] mx-auto mt-6">
                     {children}
                   </div>
                 </main>

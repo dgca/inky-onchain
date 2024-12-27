@@ -82,7 +82,7 @@ export function MintButton() {
 
                   tokenId = Number(maybeTokenId);
 
-                  router.push(`/token/${tokenId}`);
+                  router.push(`/tokens/${tokenId}`);
                 });
               } catch (err) {
                 setError(

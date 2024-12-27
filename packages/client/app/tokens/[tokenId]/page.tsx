@@ -1,5 +1,4 @@
 "use client";
-import { hexToBytes } from "viem";
 import { VT323 } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { useParams } from "next/navigation";
@@ -8,21 +7,12 @@ import { INKY_ADDRESS } from "@/web3/addresses";
 import { INKY_ABI } from "@/web3/abis/InkyOnChain";
 import styles from "./styles.module.css";
 import { useMemo } from "react";
+import { renderImageBytes } from "@/lib/renderImageBytes";
 
 const vt323 = VT323({
   subsets: ["latin"],
   weight: ["400"],
 });
-
-function renderImageBytes(hexString: string) {
-  const bytesData = hexToBytes(hexString as `0x${string}`);
-
-  const binString = Array.from(bytesData, (byte) =>
-    String.fromCodePoint(byte),
-  ).join("");
-
-  return btoa(binString);
-}
 
 export default function TokenPage() {
   const params = useParams();
@@ -61,6 +51,19 @@ export default function TokenPage() {
         <p className={cn(vt323.className, "text-white text-center text-xl")}>
           Minted by: {minterAddress}
         </p>
+      )}
+      {isMinterSuccess && (
+        <a
+          href={`https://explorer.inkonchain.com/token/${INKY_ADDRESS}/instance/${params.tokenId}`}
+          target="_blank"
+          rel="noreferrer"
+          className={cn(
+            vt323.className,
+            "text-white underline text-center block hover:text-gray-300",
+          )}
+        >
+          View on Block Explorer
+        </a>
       )}
 
       {imageSrc && (
